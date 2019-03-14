@@ -1,0 +1,16 @@
+Gaussian noise to prevent the CNN model from over training.
+
+Functional API 
+
+Ensemble (@Jonathan)
+
+hybrid
+
+https://keras.io/preprocessing/image/
+
+Next Steps
+EMNIST ByClass: 814,255 characters. 62 unbalanced classes([0-9],[a-z] and [A-Z]).
+
+EMNIST Letters: 145,600 characters. 26 balanced classes -  a balanced set of the uppercase and lowercase letters into a single 26-class task
+EMNIST Digits: 280,000 characters. 10 balanced classes - balanced handwritten digit datasets directly compatible with the original MNIST dataset
+

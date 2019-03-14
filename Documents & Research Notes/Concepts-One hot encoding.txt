@@ -1,0 +1,3 @@
+https://machinelearningmastery.com/how-to-one-hot-encode-sequence-data-in-python/
+
+A one hot encoding is a representation of categorical variables as binary vectors.

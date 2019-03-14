@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>SheLLLearn Numbers</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="../static/js/painterro-0.2.68.min.js"></script>
+    <style>
+      body {
+        background-repeat: no-repeat; 
+        background-size: auto;
+        background-position: center;
+        background-color: #1aa9bc; /* Green */
+        font: 20px Montserrat, sans-serif;
+        line-height: 2;
+        color: #000000;
+      }
+      p {font-size: 16px;}
+      .margin {margin-bottom: 45px;}
+      .bg-1 { 
+          background-color: #1aa9bc; /* Green */
+          color: #ffffff;
+      }
+      .navbar {
+          padding-top: 15px;
+          padding-bottom: 15px;
+          border: 0;
+          border-radius: 0;
+          margin-bottom: 0;
+          font-size: 16px;
+          letter-spacing: 5px;
+      }
+      .navbar-nav  li a:hover {
+          color: #1abc9c !important;
+      }
+      .ptro-holder-wrapper {
+        height: 1px !important; 
+        width: 1px !important;
+        margin-top: 1px !important;
+        color: lightgrey
+      }
+      .ptro-holder {
+        height: 560px;
+        width: 560px;
+        margin-top: 100px;
+      }
+      img {
+        float: right;
+        padding-right: 50px;
+      }
+      </style>
+    </head>
+    <body>
+  
+  <!-- Navbar -->
+  <nav class="navbar navbar-default">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>                        
+        </button>
+        <a class="navbar-brand" href="#">SheLLLearn - Numbers</a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav navbar-right">
+              <li><a href="/login">Login</a></li>
+              <li><a href="/ShellLearn_book">Home</a></li>
+              <li><a href="/letters">Letters</a></li>
+              <li><a href="/numbers">Numbers</a></li>
+              <li><a href="/about">About</a></li>
+          </ul>
+      </div>
+    </div>
+  </nav>
+      <!-- END Navbar -->
+      <div class="row">
+          <div class="col-md-12"><h2>Directions:  Practice the Number in the picture</h2></div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+        
+              <!-- Start Painterro -->
+          <script>
+              var ptro = Painterro({
+            saveHandler: function (image, done) {
+                var xhr = new XMLHttpRequest()
+                xhr.open('POST', 'http://127.0.0.1:5000/Numbers/')
+                xhr.setRequestHeader('Content-Type', 'application/json')
+                xhr.send(JSON.stringify({
+                    image: image.asDataURL('image/png'),
+                    symbol: symbol
+                }))
+                xhr.onload = function (e) {
+                    done(true)
+                    window.location.reload()
+                    var obj = JSON.parse(this.responseText);
+                    // alert("Prediction:  - "+obj.prediction+" - \n \nSuccess:  "+obj.success);
+                     alert("You wrote the number:  - "+obj.prediction+"   Result: "+obj.result+"\nYour Score: \nTrue: "+obj.trues+"   False: "+obj.falses);
+                }
+            },
+            defaultTool: "brush",
+            defaultSize: '560x560',
+            defaultLineWidth: 70,
+            hiddenTools: ['crop', 'line', 'rect', 'ellipse','text', 'rotate', 'resize', 'open', 'close']
+            })
+        ptro.show()
+      </script>
+        <!-- End Painterro -->
+        <!-- Begin Randomizer-->
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+      <script>
+        var symbol = 'x'
+        function random_upper(){
+        var NumberCards=new Array()
+        //specify random images below. You can have as many as you wish
+        NumberCards[0] = 'number0.png'
+        NumberCards[1] = 'number1.png'
+        NumberCards[2] = 'number2.png'
+        NumberCards[3] = 'number3.png'
+        NumberCards[4] = 'number4.png'
+        NumberCards[5] = 'number5.png'
+        NumberCards[6] = 'number6.png'
+        NumberCards[7] = 'number7.png'
+        NumberCards[8] = 'number8.png'
+        NumberCards[9] = 'number9.png'
+             
+        var ry=Math.floor(Math.random()*NumberCards.length)
+        if (ry==0)
+        ry=1
+        document.write('<img src="../static/img/NumberCards/'+NumberCards[ry]+'" border=0, height=500 float: center;>')
+        symbol = NumberCards[ry].substring(6,7)
+        }
+        random_upper()
+    </script>
+</body>
+</html>
