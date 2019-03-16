@@ -1,0 +1,8 @@
+My thoughts in designing the architecture where as follows. 
+Letters and numbers are largely defined by the orientation of lines 
+and position. To capture the orientation I included two parallel 
+convolution paths with either vertical or horizontal orientation.  
+The average pooling helps determine the net orientation for that region.
+The square convolution helps consolidate this information. 
+The locally connected layer helps define and amplify the important regions of interest. 
+The rest was mostly trial and error.
