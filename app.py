@@ -63,11 +63,11 @@ def prepare_image(img):
 
 @app.route("/")
 def main():
-    return render_template('login.html')
+    return render_template('home.html')
 
 @app.route('/home',  methods=['GET', 'POST'])
 def home():
-    return render_template('index.html')
+    return render_template('home.html')
 
 @app.route('/about',  methods=['GET', 'POST'])
 def about():
@@ -75,6 +75,7 @@ def about():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    return render_template('login.html')
     error = None
     if request.method == 'POST':
         global userID
